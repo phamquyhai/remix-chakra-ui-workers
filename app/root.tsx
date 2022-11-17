@@ -8,7 +8,7 @@ import {
   LiveReload,
   useCatch,
 } from "@remix-run/react";
-import { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
+import type { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
 import { withEmotionCache } from "@emotion/react";
 import { Box, ChakraProvider, Heading } from "@chakra-ui/react";
 import { ServerStyleContext, ClientStyleContext } from "./styles/context";
@@ -55,7 +55,7 @@ const Document = withEmotionCache(
       });
       // reset cache to reapply global styles
       clientStyleData?.reset();
-    }, []);
+    }, [clientStyleData, emotionCache.sheet]);
 
     return (
       <html lang="en">
